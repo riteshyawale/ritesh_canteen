@@ -188,7 +188,7 @@ function sucessCart() {
 	title: 'Submit your details',
 	html:
 	  '<input id="swal-input1" placeholder="name" class="swal2-input">' +
-	  '<input id="swal-input2" placeholder="payment" class="swal2-input">',
+	  '<input id="swal-input2" placeholder="mail" class="swal2-input">',
 	inputAttributes: {
 	  autocapitalize: 'off'
 	},
@@ -209,6 +209,6 @@ function sucessCart() {
 
 
 function logout(){
-	window.location.href='login.html';
+	window.location.href='index.html';
 }
 

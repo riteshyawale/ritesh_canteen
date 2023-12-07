@@ -1,88 +1,66 @@
-<!DOCTYPE HTML>
 <html>
 
 <head>
+	<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 
-<body >
-    <form  >
+<body>
+	<div class="container">
+		<!--  Shopping cart table wrapper  -->
+		<div>
+			<div class="txt-heading">
+				<h1 style="padding-left: 550px; padding-top: 20px;">Canteen Management System</h1>
+				<div style="padding-right: 80px;"><a onClick="logout()" id="btnSuccess">Log Out</a></div>
+				
+			</div>
+			<!-- Product gallery shell to load HTML from JavaScript code -->
+			<div id="product-grid">
+				
+					<h2 style="padding-left: 50px;">Menu</h2>
+				
+				<div id="product-item-container" style="padding-left: 50px;"></div>
 
-        <div class="maindiv">
-            <h2 style="padding-left: 55px;">Canteen Login</h2>
+			</div><br /><br />
+		</div>
+		<div id="shopping-cart">
+			
+				<a onClick="emptyCart()" id="btnEmpty">Empty Cart</a>
+			<table class="tbl-cart" cellpadding="10" cellspacing="1">
+				<thead>
+					<tr>
+						<th class='text-right' width="40%">Name</th>
+						<th class='text-right' width="20%">Unit Price</th>
+						<th class='text-right' width="15%">Quantity</th>
+						<th class='text-right' width="20%">Sub Total</th>
+					</tr>
+				</thead>
+				
+				<!--  Cart table to load data on "add to cart" action -->
+				<tbody id="cartTableBody">
+				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td class="text-right"><b>Total:</b></td>
+						<td id="itemCount" class="text-right" colspan="2"></td>
+						<td id="totalAmount" class="text-right"></td>
+						
+					</tr>
+				</tfoot>
+				
+			</table>
+			<a onClick="sucessCart()" id="btnSuccess">Proceed</a>
+			<br/>
+		</div>
 
-            Username &nbsp; <input type="text" id="user" /><br><br>
-            Password &nbsp;&nbsp; <input type="password" id="pass" /><br><br>
-            <div style="padding-right: 130px;"><a onClick="sucessCart()" id="myButton">Login</a></div>
+	</div>
 
-        </div>
-    </form>
-
-    <script>
-            
-    
-        let user = 'user';
-        let pass = '1234'
-        document.querySelector("#myButton").onclick = () => {
-            let usern = document.querySelector('#user').value;
-            let passn = document.querySelector('#pass').value;
-            if (user == usern && pass == passn) {
-                window.location.href = 'index.html';
-            } else {
-
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Invalid Username / Password'
-
-                })
-            }
-
-        };
-    </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="cart.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </body>
 
 </html>
-<style>
-    .maindiv {
-        border: 3px solid;
-        position: absolute;
-        top: 45%;
-        left: 20%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        font-size: large;
-        border-radius: 15px;
-    }
 
-    body {
-        background-image: url('https://static.wixstatic.com/media/f3bc82_c8a22cd89edf415bba37fb4f2fe82ac9~mv2.png/v1/fill/w_797,h_532,al_c,q_90/f3bc82_c8a22cd89edf415bba37fb4f2fe82ac9~mv2.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position-x: right;
-        background-size: 950px 745px;
-        background-color: rgb(218, 249, 249);
-    }
-
-    #myButton {
-        background-color: #21c823;
-        border: #61d000 1px solid;
-        padding: 5px 10px;
-        color: #ffffff;
-        float: right;
-        text-decoration: none;
-        border-radius: 3px;
-        margin: 10px 0px;
-        cursor: pointer;
-    }
-
-    input[type=text],
-    input[type=password] {
-        width: 100%;
-        padding: 10px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #434343;
-        box-sizing: border-box;
-    }
-</style>
-<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
