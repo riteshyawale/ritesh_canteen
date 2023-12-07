@@ -2,7 +2,7 @@ $(document).ready(function() {
 	emptyCart()
 	var productItem = [{
 			productName: "Biryani",
-			price: "150",
+			price: "350",
 			photo: "https://assets.cntraveller.in/photos/6218cfdf6774879c067d3ece/1:1/w_1079,h_1079,c_limit/best%20biryani%20in%20pune%20lead.jpg"
 		},
 		{
@@ -107,6 +107,7 @@ function emptyCart() {
 		// Clear JavaScript sessionStorage by index
 		sessionStorage.removeItem('shopping-cart');
 		showCartTable();
+		itemlist=[];
 	}
 }
 
@@ -167,7 +168,7 @@ function showProductGallery(product) {
 	//Iterate javascript shopping cart array
 	var productHTML = "";
 	product.forEach(function(item) {
-		productHTML += '<div class="product-item" style="height: 200px;width: 180px;">'+
+		productHTML += '<div class="product-item" >'+
 					'<img src="' + item.photo + '"style="width: 150px;height: 120px;">'+
 					'<div class="productname">' + item.productName + '</div>'+
 					'<div class="price">Rs <span>' + item.price + '</span></div>'+
