@@ -180,13 +180,13 @@ function sucessCart() {
 		html:
 			'<input id="swal-input1" placeholder="name" class="swal2-input">',	
 		showCancelButton: true,
-		confirmButtonText: 'Go To Payment',
+		confirmButtonText: 'Submit',
 		showLoaderOnConfirm: true,
 	}).then((result) => {
 		if (result.isConfirmed) {
-			var amount=	parseInt(totalamounts.replace('Rs ',''));
 			var note=JSON.stringify(itemlist);
-			note=$('#swal-input1').val()+' @ '+totalamounts+' // '+note;
+			note=$('#swal-input1').val()+' @ '+totalamounts+' **\n '+note;
+			note=note.replaceAll('{"productName":','\n').replaceAll('"price":','').replaceAll('[','').replaceAll(']','');
 			window.location.href = 'https://wa.me/918390150577?text='+note+'';
 		}		
 	})
