@@ -8,9 +8,18 @@ body {
 	text-align: right;
 }
 
-#shopping-cart {
-	margin: 50px;
-	padding-top: 480px;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+ opacity: 1 !important;
+ width: 20px;
+ height: 30px;
+}
+
+.getqu {
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: #E0E0E0 1px solid;
+	width: 90px;
 }
 
 #product-grid {
@@ -80,7 +89,6 @@ body {
 .product-item {
 	float: left;
 	background: #ffffff;
-	margin: 30px 30px 0px 0px;
 	border: #E0E0E0 1px solid;
 	padding: 10px 10px 20px 10px;
     line-height: 30px;
