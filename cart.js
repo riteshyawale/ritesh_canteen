@@ -64,6 +64,7 @@ $(document).ready(function () {
 	// showCartTable();
 });
 
+
 var itemlist = [];
 var totalamounts = '';
 
@@ -81,7 +82,7 @@ function addToCart(element) {
 	};
 	if (itemlist.find((el) => el.productName == cartItem.productName)) {
 		var indexx = itemlist.findIndex((el) => el.productName == cartItem.productName);
-		itemlist[indexx].price = ((cartItem.price) * (cartItem.quantity)) + (itemlist[indexx].price);
+		itemlist[indexx].price =  (itemlist[indexx].price);
 		itemlist[indexx].quantity = (cartItem.quantity) + (itemlist[indexx].quantity);
 	}
 	else {
@@ -124,20 +125,26 @@ function showCartTable() {
 			cartRowHTML += "<tr>" +
 				"<td class='text-right'>" + cartItem[i].productName + "</td>" +
 				"<td class='text-right'>Rs " + price.toFixed(2) + "</td>" +
-				"<td class='text-right'>" + quantity + "</td>" +
+				"<td class='text-right'><input type='number' onchange='getval(this);' min='1' class='getqu' id='getquantity["+i+"]' value="+quantity+"></td>" +
 				"<td class='text-right'>Rs " + subTotal.toFixed(2) + "</td>" +
 				"</tr>";
 			grandTotal += subTotal;
+			
 	}
 
 	$('#cartTableBody').html(cartRowHTML);
 	$('#totalAmount').css('font-weight', 900);
 	$('#totalAmount').text("Rs " + grandTotal.toFixed(2));
 	totalamounts = $('#totalAmount').text();
-
-
 }
 
+function getval(e){
+	var unitpr= parseInt(e.parentNode.parentNode.childNodes[1].textContent.replace('Rs ',''))
+	var totalpr=(unitpr*parseInt(e.value));
+	var index=parseInt(e.id.match(/\d+/)[0]);
+	itemlist[index].quantity =parseInt(e.value);
+	showCartTable()
+}
 
 function showProductGallery(product) {
 	//Iterate javascript shopping cart array
@@ -167,40 +174,22 @@ function sucessCart() {
 		})
 		return;
 	}
+
 	Swal.fire({
-		title: 'Submit your details',
+		title: 'Total Amount <br>' + totalamounts,
 		html:
-			'<input id="swal-input1" placeholder="name" class="swal2-input">' +
-			'<input id="swal-input2" placeholder="mail" class="swal2-input">',
-		inputAttributes: {
-			autocapitalize: 'off'
-		},
+			'<input id="swal-input1" placeholder="name" class="swal2-input">',	
 		showCancelButton: true,
-		confirmButtonText: 'Submit',
+		confirmButtonText: 'Go To Payment',
 		showLoaderOnConfirm: true,
 	}).then((result) => {
-		
 		if (result.isConfirmed) {
-			var name = $("#swal-input1").val();
-			Swal.fire({
-				icon: 'success',
-				title: name + '<br>Ordered Successfully <br>Total ' + totalamounts,
-				confirmButtonText: 'OK',
-				showLoaderOnConfirm: true,
-			}).then((results) => {
-				if (results.isConfirmed) {
-				var amount=	parseInt(totalamounts.replace('Rs ',''));
-				var note=JSON.stringify(itemlist);
-				var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am='+amount+'&tn='+note+'';
-				window.location.href = link;
-				
-				}
-				else{
-					window.location.href = 'index.html';
-				}
-			})			
-		}
-		
+			var amount=	parseInt(totalamounts.replace('Rs ',''));
+			var note=JSON.stringify(itemlist);
+			note=$('#swal-input1').val()+' @ '+totalamounts+' // '+note;
+			var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am='+amount+'&tn='+note+'';
+			window.location.href = link;
+		}		
 	})
 }
 
