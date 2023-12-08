@@ -8,10 +8,7 @@ body {
 	text-align: right;
 }
 
-#shopping-cart {
-	margin: 50px;
-	padding-top: 480px;
-}
+
 
 #product-grid {
 	margin: 10px;
@@ -80,7 +77,6 @@ body {
 .product-item {
 	float: left;
 	background: #ffffff;
-	margin: 30px 30px 0px 0px;
 	border: #E0E0E0 1px solid;
 	padding: 10px 10px 20px 10px;
     line-height: 30px;
