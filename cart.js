@@ -184,14 +184,14 @@ function sucessCart() {
 			var name = $("#swal-input1").val();
 			Swal.fire({
 				icon: 'success',
-				title: name + '<br>Ordered Successfully !!<br>Total ' + totalamounts,
+				title: name + '<br>Ordered Successfully <br>Total ' + totalamounts,
 				confirmButtonText: 'OK',
 				showLoaderOnConfirm: true,
 			}).then((results) => {
 				if (results.isConfirmed) {
 				var amount=	parseInt(totalamounts.replace('Rs ',''));
 				var note=JSON.stringify(itemlist);
-				var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&tn=123&purpose=00&am='+amount+'';
+				var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am='+amount+'&tn='+note+'';
 				window.location.href = link;
 				
 				}
