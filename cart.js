@@ -3,62 +3,62 @@ $(document).ready(function () {
 	var productItem = [{
 		productName: "Biryani",
 		price: "200",
-		photo: "images/biryani.jpg"
+		photo: "biryani.jpg"
 	},
 	{
 		productName: "Samosa",
 		price: "30",
-		photo: "images/61050397.jpg"
+		photo: "61050397.jpg"
 	},
 	{
 		productName: "Bread Pakoda",
 		price: "40",
-		photo: "images/84629641 (1).jpg"
+		photo: "84629641 (1).jpg"
 	},
 	{
 		productName: "Sambhar Wada",
 		price: "40",
-		photo: "images/Medu-vada-with-sambar-WS-1.jpg"
+		photo: "Medu-vada-with-sambar-WS-1.jpg"
 	},
 	{
 		productName: "Veg Thali",
 		price: "150",
-		photo: "images/thali.jpg"
+		photo: "thali.jpg"
 	},
 	{
 		productName: "Maggi",
 		price: "40",
-		photo: "images/Schezwan-Maggi.jpg"
+		photo: "Schezwan-Maggi.jpg"
 	},
 	{
 		productName: "Pohe",
 		price: "30",
-		photo: "images/poha-recipe-featured.jpg"
+		photo: "poha-recipe-featured.jpg"
 	},
 	{
 		productName: "SandWich",
 		price: "50",
-		photo: "images/83740315 (1).jpg"
+		photo: "83740315 (1).jpg"
 	},
 	{
 		productName: "Chai",
 		price: "10",
-		photo: "images/chai.jpg"
+		photo: "chai.jpg"
 },
 	{
 		productName: "Coffee",
 		price: "15",
-		photo: "images/coffee.jpg"
+		photo: "coffee.jpg"
 	},
 	{
 		productName: "Coldrinks",
 		price: "20",
-		photo: "images/dark-reality-of-cold-drinks.jpg"
+		photo: "dark-reality-of-cold-drinks.jpg"
 	},
 	{
 		productName: "Ice-Cream",
 		price: "30",
-		photo: "images/Ice-Cream-3.jpg"
+		photo: "Ice-Cream-3.jpg"
 	}];
 	showProductGallery(productItem);
 	// showCartTable();
@@ -187,7 +187,7 @@ function sucessCart() {
 			var amount=	parseInt(totalamounts.replace('Rs ',''));
 			var note=JSON.stringify(itemlist);
 			note=$('#swal-input1').val()+' @ '+totalamounts+' // '+note;
-			window.location.href = 'https://wa.me/08390150577?text='+note+'';
+			window.location.href = 'https://wa.me/918390150577?text='+note+'';
 		}		
 	})
 }
