@@ -189,7 +189,9 @@ function sucessCart() {
 				showLoaderOnConfirm: true,
 			}).then((results) => {
 				if (results.isConfirmed) {
-				window.location.href = 'upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am=20';
+				var amount=	parseInt(totalamounts.replace('Rs ',''));
+				var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am='+amount+''
+				window.location.href = link;
 				
 				}
 				else{
