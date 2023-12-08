@@ -184,10 +184,10 @@ function sucessCart() {
 		showLoaderOnConfirm: true,
 	}).then((result) => {
 		if (result.isConfirmed) {
-			var note=JSON.stringify(itemlist);
-			note=$('#swal-input1').val()+' @ '+totalamounts+' **\n '+note;
-			note=note.replaceAll('{"productName":','\n').replaceAll('"price":','').replaceAll('[','').replaceAll(']','');
+			var note=JSON.stringify(itemlist).replaceAll(' ','').replaceAll('{"productName":',' ').replaceAll('-','');
+			note=$('#swal-input1').val()+'  @  '+totalamounts+'   /   /   '+note;
 			window.location.href = 'https://wa.me/918390150577?text='+note+'';
+			
 		}		
 	})
 }
