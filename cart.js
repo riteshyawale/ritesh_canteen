@@ -3,62 +3,62 @@ $(document).ready(function () {
 	var productItem = [{
 		productName: "Biryani",
 		price: "200",
-		photo: "https://assets.cntraveller.in/photos/6218cfdf6774879c067d3ece/1:1/w_1079,h_1079,c_limit/best%20biryani%20in%20pune%20lead.jpg"
+		photo: "biryani.jpg"
 	},
 	{
 		productName: "Samosa",
 		price: "30",
-		photo: "https://static.toiimg.com/thumb/61050397.cms?imgsize=246859&width=800&height=800"
+		photo: "61050397.jpg"
 	},
 	{
 		productName: "Bread Pakoda",
 		price: "40",
-		photo: "https://static.toiimg.com/photo/84629641.cms"
+		photo: "84629641 (1).jpg"
 	},
 	{
 		productName: "Sambhar Wada",
 		price: "40",
-		photo: "https://www.nehascookbook.com/wp-content/uploads/2022/09/Medu-vada-with-sambar-WS-1.jpg"
+		photo: "Medu-vada-with-sambar-WS-1.jpg"
 	},
 	{
 		productName: "Veg Thali",
 		price: "150",
-		photo: "https://eastindianrecipes.net/wp-content/uploads/2023/02/Chicken-Thali-Indian-Thali-Recipe7.jpg"
+		photo: "thali.jpg"
 	},
 	{
 		productName: "Maggi",
 		price: "40",
-		photo: "https://www.tipsnrecipesblog.com/wp-content/uploads/2022/01/Schezwan-Maggi.jpg"
+		photo: "Schezwan-Maggi.jpg"
 	},
 	{
 		productName: "Pohe",
 		price: "30",
-		photo: "https://www.indianveggiedelight.com/wp-content/uploads/2022/07/poha-recipe-featured.jpg"
+		photo: "poha-recipe-featured.jpg"
 	},
 	{
 		productName: "SandWich",
 		price: "50",
-		photo: "https://static.toiimg.com/photo/83740315.cms"
+		photo: "83740315 (1).jpg"
 	},
 	{
 		productName: "Chai",
 		price: "10",
-		photo: "https://lh5.googleusercontent.com/p/AF1QipPm3pJRa7cyjjo6l1VqcS5jXUNIcvSONBxpq2Xv=w1080-k-no"
-	},
+		photo: "chai.jpg"
+},
 	{
 		productName: "Coffee",
 		price: "15",
-		photo: "https://lzd-img-global.slatic.net/g/ff/kf/S48289b28ea694578a41ec39336950e462.jpg_720x720q80.jpg"
+		photo: "coffee.jpg"
 	},
 	{
 		productName: "Coldrinks",
 		price: "20",
-		photo: "https://images.saymedia-content.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTkxODQ5MTA0ODMyNDcyNTYy/dark-reality-of-cold-drinks.jpg"
+		photo: "dark-reality-of-cold-drinks.jpg"
 	},
 	{
 		productName: "Ice-Cream",
 		price: "30",
-		photo: "https://aestheticpoems.com/wp-content/uploads/2022/04/Ice-Cream-3.jpg"
+		photo: "Ice-Cream-3.jpg"
 	}];
 	showProductGallery(productItem);
 	// showCartTable();
@@ -156,7 +156,7 @@ function showProductGallery(product) {
 			'<div class="price">Rs <span>' + item.price + '</span></div>' +
 			'<div class="cart-action">' +
 			'<input type="number" min="1" class="product-quantity" name="quantity" value="1" size="2" style="width: 60px;"/>' +
-			'<input type="submit" value="Add to Cart" class="add-to-cart" onClick="addToCart(this)" />' +
+			'<input type="submit" value="Add" class="add-to-cart" onClick="addToCart(this)" />' +
 			'</div>' +
 			'</div>';
 		"<tr>";
@@ -174,39 +174,21 @@ function sucessCart() {
 		})
 		return;
 	}
+
 	Swal.fire({
-		title: 'Submit your details',
+		title: 'Total Amount <br>' + totalamounts,
 		html:
-			'<input id="swal-input1" placeholder="name" class="swal2-input">' +
-			'<input id="swal-input2" placeholder="mail" class="swal2-input">',
-		inputAttributes: {
-			autocapitalize: 'off'
-		},
+			'<input id="swal-input1" placeholder="name" class="swal2-input">',	
 		showCancelButton: true,
 		confirmButtonText: 'Submit',
 		showLoaderOnConfirm: true,
 	}).then((result) => {
-		
 		if (result.isConfirmed) {
-			var name = $("#swal-input1").val();
-			Swal.fire({
-				icon: 'success',
-				title: name + '<br>Ordered Successfully <br>Total ' + totalamounts,
-				confirmButtonText: 'OK',
-				showLoaderOnConfirm: true,
-			}).then((results) => {
-				if (results.isConfirmed) {
-				var amount=	parseInt(totalamounts.replace('Rs ',''));
-				var note=JSON.stringify(itemlist);
-				var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am='+amount+'&tn='+note+'';
-				window.location.href = link;
-				}
-				else{
-					window.location.href = 'index.html';
-				}
-			})			
-		}
-		
+			var note=JSON.stringify(itemlist,null,2);
+			note=$('#swal-input1').val()+' @ '+totalamounts+' ** '+note;
+			note=note.replaceAll('"productName":','').replaceAll(',"price",:','');
+			window.location.href = 'https://wa.me/918390150577?text='+note+'';
+		}		
 	})
 }
 
