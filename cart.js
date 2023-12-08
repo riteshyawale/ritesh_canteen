@@ -190,7 +190,8 @@ function sucessCart() {
 			}).then((results) => {
 				if (results.isConfirmed) {
 				var amount=	parseInt(totalamounts.replace('Rs ',''));
-				var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am='+amount+''
+				var note=JSON.stringify(itemlist);
+				var link='upi://pay?pa=riteshyawale@ybl&pn=Ritesh Yawale&mc=0000&mode=02&purpose=00&am='+amount+'&tn=good';
 				window.location.href = link;
 				
 				}
