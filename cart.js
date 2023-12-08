@@ -187,7 +187,7 @@ function sucessCart() {
 			var amount=	parseInt(totalamounts.replace('Rs ',''));
 			var note=JSON.stringify(itemlist);
 			note=$('#swal-input1').val()+' @ '+totalamounts+' // '+note;
-			window.location.href = 'https://wa.me/08390150577?text='+note+'';
+			window.location.href = 'https://wa.me/918390150577?text='+note+'';
 		}		
 	})
 }
