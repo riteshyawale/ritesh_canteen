@@ -215,14 +215,14 @@ function sucessCart() {
 			let new_list = itemlist.map(function(obj) {
 				return {
 				  productName: obj.productName,
-				  quantity: obj.quantity,
+				  qt: obj.quantity,
 				  price: 'Rs.'+obj.price
 				}
 			});
-			let nameamount=new Array({NAME: $('#swal-input1').val(), TOTAL_AMOUNT: totalamounts.replace('Rs','Rs.')});
+			let nameamount=new Array({'': $('#swal-input1').val(), '': totalamounts.replace('Rs','Rs.')});
 			var arr3 = [...new_list, ...nameamount];
 			var  formatted = `[${arr3.map(JSON.stringify).join(',\n ')}]`;
-			formatted=formatted.replaceAll('-','').replaceAll(' ','');
+			formatted=formatted.replaceAll('-','').replaceAll(' ','').replaceAll('productName','');
 			// var note=JSON.stringify(itemlist).replaceAll(' ','').replaceAll('{"productName":',' ').replaceAll('-','');
 			// note=$('#swal-input1').val()+'  @  '+totalamounts+'   /   /   '+note;
 			window.location.href = 'https://wa.me/918390150577?text='+formatted+'';
