@@ -7,8 +7,8 @@
 <body >
     <form  >
 
-        <div class="maindiv">
-            <h2 >Canteen Login</h2>
+        <div class="maindiv"> <!--encapsulates the login form-->         
+             <h2 >Canteen Login</h2>
 
             Username &nbsp; <input type="text" id="user" /><br><br>
             Password &nbsp;&nbsp; <input type="password" id="pass" /><br><br>
@@ -26,7 +26,7 @@
             let usern = document.querySelector('#user').value;
             let passn = document.querySelector('#pass').value;
             if (user == usern && pass == passn) {
-                window.location.href = 'login.html';
+                window.location.href = 'cart.html';
             } else {
 
                 Swal.fire({
